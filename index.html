@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskman Task Browser</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+
+        .filterRow{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .filterLabel{
+            width: 200px;
+            float: left;
+        }
+
+        select{
+            width: 200px;
+        }
+
+        input[type=text]{
+            width: 192px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="filtersContainer">
+            <div class="filterRow">
+                <div class="filterLabel">Filter</div>
+                <div class="filterLabel" style="width: 25px; text-align: center;">F?</div>
+                <div class="filterLabel">Value</div>
+                <div class="filterLabel">Sort</div>
+            </div>
+            <br>
+            <div class="filterRow">
+                <input type="checkbox" id="check_tier">
+                <div class="filterLabel">Tier</div>
+                <select id="filter_tier">
+                    <option value=1>Beginner</option>
+                    <option value=2>Easy</option>
+                    <option value=3>Medium</option>
+                    <option value=4>Hard</option>
+                    <option value=5>Elite</option>
+                    <option value=6>Master</option>
+                    <option value=7>Legendary</option>
+                    <option value=8>God</option>
+                    <option value=9>Passive</option>
+                </select>
+                <select id="sort_tier" class="sortSelect">
+                    <option value=0>None</option>
+                    <option value=1>Asc</option>
+                    <option value=2>Desc</option>
+                </select>
+            </div>
+
+            <div class="filterRow">
+                <input type="checkbox" id="check_title">
+                <div class="filterLabel">Title</div>
+                <input type="text" id="filter_title">
+                <select id="sort_title" class="sortSelect">
+                    <option value=0>None</option>
+                    <option value=1>Asc</option>
+                    <option value=2>Desc</option>
+                </select>
+                <br>
+
+                <input type="checkbox" id="check_desc">
+                <div class="filterLabel">Description</div>
+                <input type="text" id="filter_desc">
+                <select id="sort_desc" class="sortSelect">
+                    <option value=0>None</option>
+                    <option value=1>Asc</option>
+                    <option value=2>Desc</option>
+                </select>
+            </div>
+
+            <div class="filterRow">
+                <input type="checkbox" id="check_dice">
+                <div class="filterLabel">Dice & Priority</div>
+                <input type="text" id="filter_dice">
+                <select id="sort_dice" class="sortSelect">
+                    <option value=0>None</option>
+                    <option value=1>Asc</option>
+                    <option value=2>Desc</option>
+                </select>
+            </div>
+
+            <div class="filterRow">
+                <input type="checkbox" id="check_weight">
+                <div class="filterLabel">Weight</div>
+                <input type="text" id="filter_weight">
+                <select id="sort_weight" class="sortSelect">
+                    <option value=0>None</option>
+                    <option value=1>Asc</option>
+                    <option value=2>Desc</option>
+                </select>
+                <br>
+                <input type="button" id="filter_submit" value="Sort/Filter">
+            </div>
+        </div>
+        <div class="taskList"></div>
+    </div>
+    <script src="taskbrowser.js"></script>
+</body>
+</html>
