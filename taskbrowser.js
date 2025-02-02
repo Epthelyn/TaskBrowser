@@ -15,9 +15,24 @@
     async function fetchAPIData(){
         const response = await fetch("https://taskman.rs/api/tasks");
         tasks = await response.json();
-    
+        
+        const tierCheck = [];
+        const checkedTiers = [];
+        tasks.forEach(task => {
+            if(!tierCheck.includes(task.tier_id)){
+                tierCheck.push(task.tier_id);
+                checkedTiers.push(task);
+            }
+        });
+        console.log(tierCheck,checkedTiers);
         console.log(tasks);
         listTasks();
+    }
+
+    const convertSlug = (slug) => {
+        return {
+            legendary: "Grandmaster"
+        }[slug] || (slug.substring(0,1).toUpperCase() + slug.substr(1));
     }
 
     function listTasks(){
@@ -89,6 +104,7 @@
         $('.taskList').html(
             `<table>
             <tr>
+                <th></th>
                 <th>Hash ID</th>
                 <th>Tier</th>
                 <th>Title</th>
@@ -100,8 +116,9 @@
             ${
             filteredTasks.map(t => {
                 return `<tr>
+                    <td><a href="https://taskman.rs/admin/resources/tasks/${t.id}/edit" target="_blank">Link</a></td>
                     <td>${t.hash_id}</td>
-                    <td>${t.tier.slug}</td>
+                    <td>${convertSlug(t.tier.slug)}</td>
                     <td>${t.title}</td>
                     <td>${t.description}</td>
                     <td>${t.dice}</td>
